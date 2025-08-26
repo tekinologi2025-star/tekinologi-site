@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tekinologi Celular</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Estilo do carrossel */
+    .carousel { display: flex; overflow: hidden; position: relative; }
+    .carousel img { flex-shrink: 0; width: 100%; transition: transform 0.5s ease-in-out; }
+    /* Popup */
+    .popup {
+      position: fixed; 
+      bottom: 100px; 
+      right: 20px; 
+      background: #2563eb; 
+      color: #fff; 
+      padding: 16px 24px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3); 
+      opacity: 0; 
+      transform: scale(0.8);
+      transition: all 0.3s ease-in-out;
+      display: flex; 
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+    }
+    .popup.show {
+      opacity: 1; 
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- Header -->
+  <header class="bg-blue-700 text-white p-6 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 class="text-2xl font-bold">📱 Tekinologi Celular</h1>
+      <span class="text-sm">Whatsapp: (98) 1669-353</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="bg-cover bg-center h-96 flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1511707171634-5f897ff02aa9');">
+    <div class="bg-black bg-opacity-50 p-6 rounded-2xl">
+      <h2 class="text-4xl font-bold mb-4 text-center">Assistência Técnica Especializada</h2>
+      <p class="text-center text-lg">Conserto de celulares, notebooks, PCs e controles de console com qualidade e garantia.</p>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section class="py-16 container mx-auto">
+    <h3 class="text-3xl font-bold text-center mb-12">🔧 Nossos Serviços</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/YT2rrGj/troca-tela.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Troca de Tela">
+        <h4 class="font-bold text-xl mb-2">Troca de Tela</h4>
+        <p>Substituímos telas quebradas com rapidez e qualidade.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/hBnLQDc/troca-bateria.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Troca de Bateria">
+        <h4 class="font-bold text-xl mb-2">Troca de Bateria</h4>
+        <p>Baterias novas e originais para maior durabilidade.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/3m7b7mj/troca-conector.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Troca de Conector">
+        <h4 class="font-bold text-xl mb-2">Troca de Conector</h4>
+        <p>Recuperamos a entrada de carga com peças de qualidade.</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/8DXqtPL/reparos-gerais.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Reparos em Geral">
+        <h4 class="font-bold text-xl mb-2">Reparos em Geral</h4>
+        <p>Consertamos qualquer defeito no seu dispositivo.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/jv1p8Qj/notebook-pc.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Notebook e PC">
+        <h4 class="font-bold text-xl mb-2">Notebook e PC</h4>
+        <p>Assistência para computadores e notebooks.</p>
+      </div>
+      <div class="bg-white rounded-2xl shadow-lg p-6 text-center">
+        <img src="https://i.ibb.co/Xy2nQFw/controle-console.jpg" class="w-full h-40 object-cover rounded-xl mb-4" alt="Controle de Console">
+        <h4 class="font-bold text-xl mb-2">Controle de Console</h4>
+        <p>Reparo e manutenção de controles de videogame.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Carrossel -->
+  <section class="py-16 bg-gray-200">
+    <h3 class="text-3xl font-bold text-center mb-8">📸 Antes e Depois</h3>
+    <div class="relative w-full max-w-4xl mx-auto">
+      <div id="carousel" class="carousel">
+        <img src="https://i.ibb.co/4tR6PBh/antes1.jpg" alt="Antes 1">
+        <img src="https://i.ibb.co/THKj9cB/depois1.jpg" alt="Depois 1">
+        <img src="https://i.ibb.co/3CtWrtz/antes2.jpg" alt="Antes 2">
+        <img src="https://i.ibb.co/DwLt4L6/depois2.jpg" alt="Depois 2">
+      </div>
+      <button onclick="prevSlide()" class="absolute top-1/2 left-0 bg-blue-700 text-white px-3 py-2 rounded-full">‹</button>
+      <button onclick="nextSlide()" class="absolute top-1/2 right-0 bg-blue-700 text-white px-3 py-2 rounded-full">›</button>
+    </div>
+  </section>
+
+  <!-- Depoimentos -->
+  <section class="py-16 container mx-auto">
+    <h3 class="text-3xl font-bold text-center mb-12">💬 O que dizem nossos clientes</h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white shadow-lg rounded-2xl p-6">
+        <p>“Serviço rápido e com qualidade! Minha tela ficou nova.”</p>
+        <span class="block mt-4 font-bold">– Ana Souza</span>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl p-6">
+        <p>“Troquei a bateria e agora meu celular dura o dia todo.”</p>
+        <span class="block mt-4 font-bold">– Carlos Lima</span>
+      </div>
+      <div class="bg-white shadow-lg rounded-2xl p-6">
+        <p>“Ótimo atendimento, recomendo para todos!”</p>
+        <span class="block mt-4 font-bold">– Júlia Fernandes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pagamento -->
+  <section class="bg-blue-700 text-white py-12 text-center">
+    <h3 class="text-3xl font-bold mb-4">💳 Pagamento Facilitado</h3>
+    <p class="text-lg">Todos os serviços podem ser parcelados em até <strong>12x no cartão</strong>.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white text-center p-6 flex justify-between items-center">
+    <p>&copy; 2025 Tekinologi Celular - Todos os direitos reservados.</p>
+    <button id="toggleSound" class="text-2xl">🔊</button>
+  </footer>
+
+  <!-- Botão WhatsApp -->
+  <a href="https://wa.me/55981669353" target="_blank" class="fixed bottom-5 right-5 flex items-center space-x-3 bg-green-500 text-white py-3 px-5 rounded-full shadow-lg hover:bg-green-600 transition">
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Atendente" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+    <span class="font-medium">Atendimento Online</span>
+    <i class="fab fa-whatsapp fa-lg"></i>
+  </a>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <span id="popupIcon">✅</span>
+    <span id="popupMessage">Serviço finalizado com sucesso!</span>
+  </div>
+
+  <audio id="popupSound">
+    <source src="https://www.soundjay.com/buttons/sounds/button-29.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // Carrossel
+    let currentIndex = 0;
+    const carousel = document.getElementById(\"carousel\");
+    const slides = carousel.querySelectorAll(\"img\");
+    function showSlide(index) {
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+    setInterval(nextSlide, 3000);
+
+    // Popup automático
+    const popup = document.getElementById(\"popup\");
+    const popupMessage = document.getElementById(\"popupMessage\");
+    const popupIcon = document.getElementById(\"popupIcon\");
+    const popupSound = document.getElementById(\"popupSound\");
+    let soundEnabled = true;
+
+    const messages = [
+      {text: \"Troca de tela do J8 pronta!\", icon: \"📱\"},
+      {text: \"Controle do Xbox Series S ficou pronto!\", icon: \"🎮\"},
+      {text: \"Notebook formatado com sucesso!\", icon: \"💻\"},
+      {text: \"Troca de bateria finalizada!\", icon: \"🔋\"},
+    ];
+
+    function showPopup() {
+      let msg = messages[Math.floor(Math.random() * messages.length)];
+      popupMessage.textContent = msg.text;
+      popupIcon.textContent = msg.icon;
+      popup.classList.add(\"show\");
+      if (soundEnabled) { popupSound.play(); }
+      setTimeout(() => { popup.classList.remove(\"show\"); }, 4000);
+    }
+
+    setInterval(showPopup, 10000);
+
+    // Toggle som
+    document.getElementById(\"toggleSound\").addEventListener(\"click\", function() {
+      soundEnabled = !soundEnabled;
+      this.textContent = soundEnabled ? \"🔊\" : \"🔇\";
+    });
+  </script>
+
+</body>
+</html>

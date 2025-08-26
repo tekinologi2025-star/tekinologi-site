@@ -4,194 +4,152 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tekinologi Celular</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Estilo do botão flutuante */
-    .whatsapp-float {
-      position: fixed;
-      width: 70px;
-      height: 70px;
-      bottom: 20px;
-      right: 20px;
-      background-color: #25d366;
-      color: #FFF;
-      border-radius: 50px;
-      text-align: center;
-      font-size: 36px;
-      box-shadow: 2px 2px 3px #999;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    header { background:#111; color:#fff; text-align:center; padding:40px 20px; }
+    header h1 { font-size:2.5rem; margin:0; }
+    header p { font-size:1.2rem; margin-top:10px; }
+
+    section { padding:40px 20px; text-align:center; }
+    section h2 { font-size:2rem; margin-bottom:20px; }
+
+    .services { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
+    .service { flex:1 1 250px; max-width:300px; border:1px solid #ddd; border-radius:10px; padding:15px; background:#fafafa; }
+    .service img { max-width:100%; height:auto; border-radius:10px; }
+
+    .carousel { position:relative; width:100%; max-width:800px; margin:40px auto; overflow:hidden; border-radius:15px; }
+    .carousel img { width:100%; height:auto; display:none; }
+    .carousel img.active { display:block; }
+
+    .testimonials { background:#f5f5f5; padding:40px 20px; }
+    .testimonial { max-width:600px; margin:0 auto 20px; font-style:italic; }
+
+    footer { background:#111; color:#fff; text-align:center; padding:20px; position:relative; }
+    .volume-toggle { cursor:pointer; font-size:20px; position:absolute; right:20px; top:50%; transform:translateY(-50%); }
+
+    /* WhatsApp flutuante */
+    .whatsapp-btn {
+      position: fixed; bottom:20px; right:20px;
+      background:#25d366; color:#fff; border-radius:50%;
+      width:60px; height:60px; display:flex; align-items:center; justify-content:center;
+      font-size:30px; text-decoration:none; box-shadow:0 4px 6px rgba(0,0,0,0.3);
     }
 
     /* Popups */
     .popup {
-      position: fixed;
-      bottom: 100px;
-      right: 20px;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      display: none;
-      font-size: 18px;
-      font-weight: 600;
-      animation: zoomIn 0.3s ease;
-      z-index: 999;
+      position: fixed; bottom:100px; right:20px;
+      background:#111; color:#fff; padding:15px 20px; border-radius:10px;
+      opacity:0; transform:scale(0.8); transition:all 0.3s ease-in-out;
+      font-size:1rem; box-shadow:0 4px 8px rgba(0,0,0,0.3);
     }
-
-    @keyframes zoomIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+    .popup.show { opacity:1; transform:scale(1); }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
 
-  <!-- Header -->
-  <header class="bg-blue-600 text-white p-6 text-center">
-    <h1 class="text-3xl font-bold">Tekinologi Celular</h1>
-    <p>WhatsApp: (55) 98166-9353</p>
-    <p class="mt-2">Todos os serviços em até 12x no cartão 💳</p>
+  <header>
+    <h1>Tekinologi Celular</h1>
+    <p>Assistência Técnica Especializada - Troca de Tela, Bateria, Conector e muito mais!</p>
+    <p><strong>Parcelamos em até 12x nos cartões</strong></p>
   </header>
 
-  <!-- Hero -->
-  <section class="text-center py-10 bg-white shadow">
-    <h2 class="text-4xl font-bold mb-4">Assistência Técnica Especializada</h2>
-    <p class="text-lg">Celulares • Controles • Notebooks • PCs</p>
-    <img src="https://i.ibb.co/wrPpFqk/smartphone-repair.jpg" alt="Reparo Celular" class="mx-auto mt-6 rounded-lg shadow-lg w-96">
-  </section>
-
-  <!-- Serviços -->
-  <section class="py-12 px-6">
-    <h2 class="text-2xl font-bold text-center mb-10">Nossos Serviços</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl">
-        <img src="https://i.ibb.co/qNB8ZQy/tela.jpg" class="rounded-lg mb-4 w-full h-48 object-cover" alt="Troca de Tela">
-        <h3 class="text-xl font-bold">Troca de Tela</h3>
+  <section>
+    <h2>Nossos Serviços</h2>
+    <div class="services">
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2018/06/20/22/55/broken-phone-3481371_1280.jpg" alt="Troca de Tela">
+        <h3>Troca de Tela</h3>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl">
-        <img src="https://i.ibb.co/5R4JfPc/bateria.jpg" class="rounded-lg mb-4 w-full h-48 object-cover" alt="Troca de Bateria">
-        <h3 class="text-xl font-bold">Troca de Bateria</h3>
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2016/12/28/09/36/battery-1939121_1280.jpg" alt="Troca de Bateria">
+        <h3>Troca de Bateria</h3>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl">
-        <img src="https://i.ibb.co/BKDJbtV/conector.jpg" class="rounded-lg mb-4 w-full h-48 object-cover" alt="Troca de Conector">
-        <h3 class="text-xl font-bold">Troca de Conector</h3>
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/06/18/usb-1862702_1280.jpg" alt="Troca de Conector">
+        <h3>Troca de Conector</h3>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl">
-        <img src="https://i.ibb.co/SrdJ6zr/reparo.jpg" class="rounded-lg mb-4 w-full h-48 object-cover" alt="Reparos Gerais">
-        <h3 class="text-xl font-bold">Reparos em Geral</h3>
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/05/08/phone-1862213_1280.jpg" alt="Reparos em Geral">
+        <h3>Reparos em Geral</h3>
       </div>
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-xl">
-        <img src="https://i.ibb.co/7Qh3spV/controle.jpg" class="rounded-lg mb-4 w-full h-48 object-cover" alt="Controle de Console">
-        <h3 class="text-xl font-bold">Controle de Console</h3>
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2016/11/29/12/54/xbox-1865845_1280.jpg" alt="Controle de Console">
+        <h3>Controle de Console</h3>
+      </div>
+      <div class="service">
+        <img src="https://cdn.pixabay.com/photo/2016/11/23/15/19/computer-1857756_1280.jpg" alt="Notebook e PC">
+        <h3>Notebook & PC</h3>
       </div>
     </div>
   </section>
 
-  <!-- Carrossel -->
-  <section class="py-12 bg-gray-100">
-    <h2 class="text-2xl font-bold text-center mb-8">Antes e Depois</h2>
-    <div class="relative w-full max-w-3xl mx-auto">
-      <div id="carousel" class="overflow-hidden rounded-lg">
-        <div class="flex transition-transform duration-700" id="carousel-inner">
-          <img src="https://i.ibb.co/cT2k4Dx/antes.jpg" class="w-full h-80 object-cover">
-          <img src="https://i.ibb.co/Ltz2v5r/depois.jpg" class="w-full h-80 object-cover">
-          <img src="https://i.ibb.co/Ltz2v5r/depois.jpg" class="w-full h-80 object-cover">
-        </div>
-      </div>
-      <button onclick="prevSlide()" class="absolute top-1/2 left-4 bg-black bg-opacity-50 text-white px-3 py-2 rounded">‹</button>
-      <button onclick="nextSlide()" class="absolute top-1/2 right-4 bg-black bg-opacity-50 text-white px-3 py-2 rounded">›</button>
+  <section>
+    <h2>Antes e Depois</h2>
+    <div class="carousel">
+      <img src="https://cdn.pixabay.com/photo/2018/06/20/22/55/broken-phone-3481371_1280.jpg" class="active" alt="Antes reparo celular">
+      <img src="https://cdn.pixabay.com/photo/2015/12/07/10/57/phone-1081774_1280.jpg" alt="Depois reparo celular">
+      <img src="https://cdn.pixabay.com/photo/2017/07/31/11/21/mobile-phone-2557570_1280.jpg" alt="Celular funcionando">
     </div>
   </section>
 
-  <!-- Depoimentos -->
-  <section class="py-12 px-6">
-    <h2 class="text-2xl font-bold text-center mb-8">O que nossos clientes dizem</h2>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-xl shadow">
-        <p>“Excelente atendimento, meu celular voltou como novo!”</p>
-        <p class="mt-2 font-bold">— Ana Souza</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <p>“Troca de bateria super rápida e eficiente.”</p>
-        <p class="mt-2 font-bold">— João Pereira</p>
-      </div>
-      <div class="bg-white p-6 rounded-xl shadow">
-        <p>“Recomendo muito! Atendimento nota 10.”</p>
-        <p class="mt-2 font-bold">— Carlos Lima</p>
-      </div>
-    </div>
+  <section class="testimonials">
+    <h2>O que dizem nossos clientes</h2>
+    <div class="testimonial">⭐⭐⭐⭐⭐ "Excelente atendimento! Minha tela ficou nova em poucas horas." – João M.</div>
+    <div class="testimonial">⭐⭐⭐⭐⭐ "Troquei a bateria e agora meu celular dura o dia todo." – Ana P.</div>
+    <div class="testimonial">⭐⭐⭐⭐⭐ "Recomendo! Profissionais rápidos e de confiança." – Marcos L.</div>
   </section>
 
-  <!-- WhatsApp + Atendente -->
-  <div class="fixed bottom-20 right-20 flex items-center space-x-3 z-50">
-    <img src="https://i.ibb.co/m6PnW23/atendente.png" alt="Atendente" class="w-16 h-16 rounded-full border-2 border-green-500 shadow">
-    <a href="https://wa.me/5598981669353" class="whatsapp-float">
-      <i>💬</i>
-    </a>
-  </div>
+  <footer>
+    <p>© 2025 Tekinologi Celular - Todos os direitos reservados</p>
+    <span class="volume-toggle" id="volumeToggle">🔊</span>
+  </footer>
+
+  <a href="https://wa.me/55981981669353" class="whatsapp-btn" target="_blank">💬</a>
 
   <!-- Popups -->
   <div id="popup" class="popup"></div>
+  <audio id="popupSound" src="https://www.myinstants.com/media/sounds/pop-up-off.mp3"></audio>
 
-  <!-- Rodapé -->
-  <footer class="bg-blue-600 text-white p-6 text-center mt-10">
-    <p>© 2025 Tekinologi Celular - Todos os direitos reservados.</p>
-    <button id="soundToggle" class="ml-4 text-2xl">🔊</button>
-  </footer>
-
-  <!-- Scripts -->
   <script>
-    // Carrossel
-    const carousel = document.getElementById('carousel-inner');
+    // Carrossel automático
     let index = 0;
-    function showSlide() {
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    }
-    function nextSlide() {
-      index = (index + 1) % 3;
-      showSlide();
-    }
-    function prevSlide() {
-      index = (index - 1 + 3) % 3;
-      showSlide();
-    }
-    setInterval(nextSlide, 3000);
+    const slides = document.querySelectorAll('.carousel img');
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 4000);
 
-    // Popups
+    // Popups automáticas
     const popup = document.getElementById('popup');
     const messages = [
-      '✅ Troca de tela do J8 pronta!',
-      '🔧 Controle do Xbox Series S ficou pronto!',
-      '💻 Notebook formatado com sucesso!',
-      '🔋 Troca de bateria finalizada!'
+      "📱 Troca de tela do J8 pronta!",
+      "🎮 Controle do Xbox Series S ficou pronto!",
+      "💻 Notebook formatado com sucesso!",
+      "🔋 Troca de bateria finalizada!"
     ];
+    let msgIndex = 0;
     let soundEnabled = true;
-    let popupIndex = 0;
+    const sound = document.getElementById('popupSound');
 
     function showPopup() {
-      popup.innerHTML = messages[popupIndex];
-      popup.style.display = 'block';
-      if (soundEnabled) {
-        const audio = new Audio('https://www.myinstants.com/media/sounds/mixkit-software-interface-back-2575.mp3');
-        audio.play();
-      }
-      setTimeout(() => popup.style.display = 'none', 4000);
-      popupIndex = (popupIndex + 1) % messages.length;
+      popup.textContent = messages[msgIndex];
+      popup.classList.add('show');
+      if(soundEnabled) sound.play();
+      setTimeout(() => popup.classList.remove('show'), 4000);
+      msgIndex = (msgIndex + 1) % messages.length;
     }
     setInterval(showPopup, 10000);
 
-    // Som toggle
-    const soundToggle = document.getElementById('soundToggle');
-    soundToggle.addEventListener('click', () => {
+    // Controle de som
+    const volumeToggle = document.getElementById('volumeToggle');
+    volumeToggle.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
-      soundToggle.textContent = soundEnabled ? '🔊' : '🔇';
+      volumeToggle.textContent = soundEnabled ? '🔊' : '🔇';
     });
   </script>
-
 </body>
 </html>
+
 
 
